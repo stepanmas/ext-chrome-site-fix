@@ -1,4 +1,4 @@
-self.utils = new Utils();
+window.utils = new Utils();
 
 if (/https:\/\/www.google.ru\/search/.test(window.location))
     new FixGoogleSearch();

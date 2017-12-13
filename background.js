@@ -1,5 +1,5 @@
 const files = [
-    "vendor/jquery.js.js",
+    "vendor/jquery.js",
     "vendor/doT.min.js",
 
     "modules/utils.js",

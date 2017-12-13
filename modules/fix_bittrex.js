@@ -10,6 +10,8 @@ class Bittrex
                 {
                     this.update_spread()
                 }
+
+                this.remove_excess();
             }
         );
     }
@@ -19,8 +21,8 @@ class Bittrex
         setInterval(
             () =>
             {
-                var buy_price = this.get_buy_price();
-                var current_price = this.get_current_price();
+                let buy_price = this.get_buy_price();
+                let current_price = this.get_current_price();
                 let result = 99.5 - buy_price * 100 / current_price;
 
                 if (buy_price)
@@ -32,14 +34,32 @@ class Bittrex
 
     push_item(label, price_high, price_low)
     {
-        $('.fbx_spread').remove();
-        console.log(11);
+        window.utils.get_tpl(
+            'tpl_fb_spread',
+            {
+                label: label,
+                price_high: price_high,
+                price_low: price_low,
+                direction: price_low < 0 ? 'dyn-stat-down' : 'dyn-stat-up'
+            },
+            function (htm)
+            {
+                $('.fb_spread').remove();
+                $('#rowChart .market-stats').append(htm)
+            }
+        );
+    }
 
-        $('#rowChart .market-stats').append(
-            $('<div/>', {
-                class: 'col-md-12 col-xs-6 stat-right fbx_spread',
-                html: `111111111111`
-            })
+    remove_excess()
+    {
+        let doomed = [3, 4, 5, 6];
+
+        $('#rowChart .market-stats > div').each(
+            function ()
+            {
+                if (doomed.indexOf($(this).index()) !== -1)
+                    $(this).remove()
+            }
         )
     }
 

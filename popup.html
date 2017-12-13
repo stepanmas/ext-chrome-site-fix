@@ -10,18 +10,19 @@ Website fixes
 <script type="text/template" id="tpl_fb_spread">
     <div class="col-md-12 col-xs-6 stat-right fb_spread">
         <div class="wrapper">
-        <div class="title title-none"><strong>${label}</strong></div>
-        <div class="base-market-subtitle"><i class="fa fa-usd"></i><span contenteditable="true">${price_high}</span></div>
-        <div class="base-market">
-            <i class="fa fa-btc"></i>
-            <span>${price_low}</span>
-        </div>
-        <div class="direction">
-            <span class="dyn-stat-none"></span>
+            <div class="title title-none"><strong>{{= it.label }}</strong></div>
+            <div class="base-market-subtitle"><i class="fa fa-usd"></i>
+                <span contenteditable="true">{{= it.price_high }}</span>
+            </div>
+            <div class="base-market">
+                <i class="fa fa-btc"></i>
+                <span>{{= it.price_low }}</span>
+            </div>
+            <div class="direction">
+                <span class="{{= it.direction }}"></span>
+            </div>
         </div>
     </div>
-    </div>
-
 </script>
 </body>
 </html>
