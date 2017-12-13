@@ -1,9 +1,12 @@
 const files = [
-    'vendor/jquery.js',
-    // ========
-    'modules/fix_google_search.js',
-    // ========
-    'foreground.js'
+    "vendor/jquery.js.js",
+    "vendor/doT.min.js",
+
+    "modules/utils.js",
+    "modules/fix_google_search.js",
+    "modules/fix_bittrex.js",
+
+    "foreground.js"
 ];
 
 chrome.tabs.onUpdated.addListener(

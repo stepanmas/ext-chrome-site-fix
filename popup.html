@@ -4,7 +4,24 @@
     <title>Website fixes</title>
 </head>
 <body>
-    Website fixes
-    <script src="content.js"></script>
+Website fixes
+<script src="content.js"></script>
+
+<script type="text/template" id="tpl_fb_spread">
+    <div class="col-md-12 col-xs-6 stat-right fb_spread">
+        <div class="wrapper">
+        <div class="title title-none"><strong>${label}</strong></div>
+        <div class="base-market-subtitle"><i class="fa fa-usd"></i><span contenteditable="true">${price_high}</span></div>
+        <div class="base-market">
+            <i class="fa fa-btc"></i>
+            <span>${price_low}</span>
+        </div>
+        <div class="direction">
+            <span class="dyn-stat-none"></span>
+        </div>
+    </div>
+    </div>
+
+</script>
 </body>
 </html>

@@ -33,8 +33,13 @@
     "<all_urls>"
   ],
   "web_accessible_resources": [
-    "/vendor/jquery.js",
+    "/vendor/jquery.js.js",
+    "/vendor/doT.min.js",
+
+    "/modules/utils.js",
     "/modules/fix_google_search.js",
+    "/modules/fix_bittrex.js",
+
     "/foreground.js"
   ]
 }
