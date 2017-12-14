@@ -24,3 +24,31 @@ chrome.tabs.onUpdated.addListener(
         }
     }
 );
+
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse)
+    {
+        let xhr = new XMLHttpRequest();
+
+        if (request.action === "get_balance")
+        {
+            xhr.open('GET', `http://stepych.ddns.net/api/trader/balance/${request.pair}/`, false);
+            xhr.onreadystatechange = function (res)
+            {
+                if (xhr.status === 200)
+                    sendResponse(JSON.parse(res.currentTarget.response));
+            };
+            xhr.send();
+        }
+        else if (request.action === "get_history")
+        {
+            xhr.open('GET', `http://stepych.ddns.net/api/trader/history/${request.pair}/`, false);
+            xhr.onreadystatechange = function (res)
+            {
+                if (xhr.status === 200)
+                    sendResponse(JSON.parse(res.currentTarget.response));
+            };
+            xhr.send();
+        }
+    }
+);
