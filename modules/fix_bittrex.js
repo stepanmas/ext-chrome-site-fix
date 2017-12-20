@@ -59,7 +59,7 @@ class Bittrex
                 let result = 99.5 - buy_price * 100 / current_price;
 
                 if (buy_price)
-                    this.push_item('fb_spread', 'Spread', buy_price, result.toFixed(2) + '%', buy_price > 0)
+                    this.push_item('fb_spread', 'Spread', buy_price, result.toFixed(2) + '%', result > 0)
             },
             1000
         )
@@ -204,7 +204,7 @@ class Bittrex
             {
                 core()
             },
-            60000
+            60000 * 5
         )
     }
 }
