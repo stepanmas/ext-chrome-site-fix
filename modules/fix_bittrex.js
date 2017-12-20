@@ -2,6 +2,8 @@ class Bittrex
 {
     constructor()
     {
+        this._is_trade_usd = true;
+
         this.page_ready(
             () =>
             {
@@ -9,6 +11,7 @@ class Bittrex
                 if ($('#rowChart').length)
                 {
                     this.current_pair = this._format_code();
+                    this.current_pair_usd = this._format_code_usd();
 
                     this.update_spread();
                     this.remove_excess();
@@ -28,9 +31,22 @@ class Bittrex
         let end = match[0];
 
         if (end === 'USDT')
+        {
+            this._is_trade_usd = false;
             end = 'USD';
+        }
 
         return `${start}-${end}`
+    }
+
+    _format_code_usd()
+    {
+        let match = this.current_pair.split('-');
+
+        if (match[1] !== 'USD')
+            return `${match[0]}-USD`;
+
+        return this.current_pair
     }
 
     update_spread()
@@ -43,13 +59,13 @@ class Bittrex
                 let result = 99.5 - buy_price * 100 / current_price;
 
                 if (buy_price)
-                    this.push_item('fb_spread', 'Spread', buy_price, result.toFixed(2) + '%', buy_price < 0)
+                    this.push_item('fb_spread', 'Spread', buy_price, result.toFixed(2) + '%', buy_price > 0)
             },
             1000
         )
     }
 
-    push_item(cs, label, price_high, price_low, direction = true)
+    push_item(cs, label, price_high, price_low, direction_up = true)
     {
         window.utils.get_tpl(
             'tpl_fb_spread',
@@ -58,7 +74,7 @@ class Bittrex
                 label: label,
                 price_high: price_high,
                 price_low: price_low,
-                direction: direction ? 'up' : 'down'
+                direction: direction_up ? 'up' : 'down'
             },
             function (htm)
             {
@@ -98,7 +114,7 @@ class Bittrex
             }
         );
 
-        return result
+        return parseFloat(result)
     }
 
     get_current_price()
@@ -142,6 +158,28 @@ class Bittrex
                     }
                 }
             );
+
+            if (this._is_trade_usd)
+                chrome.runtime.sendMessage(
+                    {
+                        action: 'get_balance',
+                        pair: this.current_pair_usd
+                    },
+                    (res) =>
+                    {
+                        if (res.success)
+                        {
+                            console.log(res.data);
+                            let top = `${res.data.exchanges.join(', ')} | ${res.data.bids.toFixed(4)} | ${res.data.asks.toFixed(4)}`;
+                            let bottom = `${res.data.bids_percent} | ${res.data.asks_percent}`;
+
+                            this.push_item('fb_balance_USD', 'Balance USD', top, bottom, res.data.bids > res.data.asks);
+                        }
+                        else
+                            this._is_trade_usd = false
+                    }
+                );
+
             chrome.runtime.sendMessage(
                 {
                     action: 'get_history',
