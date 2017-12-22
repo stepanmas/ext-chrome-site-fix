@@ -16,6 +16,7 @@ class Bittrex
                     this.update_spread();
                     this.remove_excess();
                     this.update_balance_and_history();
+                    this.bind()
                 }
             }
         );
@@ -47,6 +48,15 @@ class Bittrex
             return `${match[0]}-USD`;
 
         return this.current_pair
+    }
+
+    bind()
+    {
+        $('h1.page-title').click(
+            () => {
+                this.update_balance_and_history();
+            }
+        ).css('cursor', 'pointer')
     }
 
     update_spread()
@@ -199,12 +209,12 @@ class Bittrex
             );
         };
         core();
-        setInterval(
-            () =>
-            {
-                core()
-            },
-            60000 * 5
-        )
+        // setInterval(
+        //     () =>
+        //     {
+        //         core()
+        //     },
+        //     60000 * 5
+        // )
     }
 }
