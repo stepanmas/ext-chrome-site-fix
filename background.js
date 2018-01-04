@@ -50,5 +50,16 @@ chrome.runtime.onMessage.addListener(
             };
             xhr.send();
         }
+
+        else if (request.action === "get_price_cmc")
+        {
+            xhr.open('GET', `https://api.coinmarketcap.com/v1/ticker/${request.pair}/`, false);
+            xhr.onreadystatechange = function (res)
+            {
+                if (xhr.status === 200)
+                    sendResponse(JSON.parse(res.currentTarget.response));
+            };
+            xhr.send();
+        }
     }
 );

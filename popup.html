@@ -15,7 +15,7 @@ Website fixes
                 <span contenteditable="true">{{= it.price_high }}</span>
             </div>
             <div class="base-market">
-                <i class="fa fa-btc"></i>
+                <i class="fa fa-{{= it.icon }}"></i>
                 <span>{{= it.price_low }}</span>
             </div>
             <div class="direction">
@@ -23,6 +23,22 @@ Website fixes
             </div>
         </div>
     </div>
+</script>
+
+<script type="text/template" id="tpl_fb_style">
+    <style>
+        .market-stats .wrapper .title {
+            font-size: 14px;
+        }
+
+        .market-stats .wrapper {
+            margin-bottom: 3px;
+        }
+
+        .market-stats .wrapper .base-market {
+            font-size: 14px;
+        }
+    </style>
 </script>
 </body>
 </html>
