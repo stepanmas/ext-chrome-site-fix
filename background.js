@@ -61,5 +61,22 @@ chrome.runtime.onMessage.addListener(
             };
             xhr.send();
         }
+
+
+        else if (request.action === "get_history_for")
+        {
+            xhr.open(
+                'GET',
+                `http://stepych.ddns.net/api/trader/history_for/${request.pair}/${request.time_amount}-${request.time_type}/`,
+                false
+            );
+            xhr.onreadystatechange = function (res)
+            {
+                console.log(res);
+                if (xhr.status === 200)
+                    sendResponse(JSON.parse(res.currentTarget.response));
+            };
+            xhr.send();
+        }
     }
 );
