@@ -35,6 +35,7 @@
   "web_accessible_resources": [
     "/vendor/jquery.js",
     "/vendor/doT.min.js",
+    "/vendor/highstock.js",
 
     "/modules/utils.js",
     "/modules/fix_google_search.js",

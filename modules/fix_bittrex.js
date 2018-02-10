@@ -15,7 +15,8 @@ class Bittrex
                     this.get_price_cmc();
                     this.insert_style();
                     this.added_history_items();
-                    this.run_intervals()
+                    this.run_intervals();
+                    this.append_graph()
                 }
             }
         );
@@ -24,9 +25,11 @@ class Bittrex
     run_intervals()
     {
         setInterval(
-            () => {
+            () =>
+            {
                 this.get_price_cmc();
                 this.added_history_items();
+                this.append_graph();
             },
             60000 * 5
         )
@@ -330,6 +333,78 @@ class Bittrex
                         'usd'
                     );
                 }
+            }
+        );
+    }
+
+    append_graph()
+    {
+        $('#rowChart .tab-content').after(
+            $('<div/>', {
+                id: 'fb_chart'
+            })
+        );
+
+        chrome.runtime.sendMessage(
+            {
+                action: 'get_history_candles',
+                pair: this.get_fixed_code()
+            },
+            (res) =>
+            {
+                Highcharts.setOptions({
+                    global: {
+                        useUTC: false
+                    }
+                });
+
+                if (self.chart)
+                {
+                    self.chart.destroy();
+                    $('#fb_chart').remove();
+                }
+
+                self.chart = Highcharts.chart('fb_chart', {
+                    chart: {
+                        zoomType: 'x'
+                    },
+                    colors: ['#00b51a', '#d8665c'],
+                    boost: {
+                        useGPUTranslations: true
+                    },
+                    title: {
+                        text: null
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            turboThreshold: 0
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Buy',
+                            threshold: 50,
+                            type: "area",
+                            negativeColor: '#d8665c',
+                            color: '#00b51a',
+                            data: res
+                        }
+                    ]
+                });
             }
         );
     }

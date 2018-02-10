@@ -1,6 +1,7 @@
 const files = [
     "vendor/jquery.js",
     "vendor/doT.min.js",
+    "vendor/highstock.js",
 
     "modules/utils.js",
     "modules/fix_google_search.js",
@@ -62,7 +63,6 @@ chrome.runtime.onMessage.addListener(
             xhr.send();
         }
 
-
         else if (request.action === "get_history_for")
         {
             xhr.open(
@@ -73,6 +73,21 @@ chrome.runtime.onMessage.addListener(
             xhr.onreadystatechange = function (res)
             {
                 console.log(res);
+                if (xhr.status === 200)
+                    sendResponse(JSON.parse(res.currentTarget.response));
+            };
+            xhr.send();
+        }
+
+        else if (request.action === "get_history_candles")
+        {
+            xhr.open(
+                'GET',
+                `http://stepych.ddns.net/api/trader/history_candles/${request.pair}/`,
+                false
+            );
+            xhr.onreadystatechange = function (res)
+            {
                 if (xhr.status === 200)
                     sendResponse(JSON.parse(res.currentTarget.response));
             };
