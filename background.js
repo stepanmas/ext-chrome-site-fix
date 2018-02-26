@@ -6,6 +6,7 @@ const files = [
     "modules/utils.js",
     "modules/fix_google_search.js",
     "modules/fix_bittrex.js",
+    "modules/fix_bitfinex.js",
 
     "foreground.js"
 ];
@@ -92,6 +93,15 @@ chrome.runtime.onMessage.addListener(
                     sendResponse(JSON.parse(res.currentTarget.response));
             };
             xhr.send();
+        }
+
+        else if (request.action === "alarm_play")
+        {
+            let audio = new Audio();
+
+            audio.src = 'dog.mp3';
+
+            audio.play();
         }
     }
 );

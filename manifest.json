@@ -40,9 +40,11 @@
     "/modules/utils.js",
     "/modules/fix_google_search.js",
     "/modules/fix_bittrex.js",
+    "/modules/fix_bitfinex.js",
 
     "/foreground.js",
 
+    "dog.mp3",
     "popup.html"
   ]
 }

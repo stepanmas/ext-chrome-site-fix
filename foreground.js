@@ -5,3 +5,6 @@ if (/https:\/\/www.google.ru\/search/.test(window.location))
 
 else if (window.location.hostname === 'bittrex.com')
      new Bittrex();
+
+else if (window.location.hostname.includes('bitfinex.com'))
+     new Bitfinex();
