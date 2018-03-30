@@ -7,9 +7,11 @@ const files = [
     "modules/fix_google_search.js",
     "modules/fix_bittrex.js",
     "modules/fix_bitfinex.js",
+    "modules/fix_discordapp.js",
 
     "foreground.js"
 ];
+let included_files = [];
 
 chrome.tabs.onUpdated.addListener(
     function (tabId, info)
@@ -18,6 +20,10 @@ chrome.tabs.onUpdated.addListener(
         {
             for (let ph of files)
             {
+                if (included_files.includes(ph))
+                    return;
+
+                included_files.push(ph);
                 chrome.tabs.executeScript(
                     tabId,
                     {file: ph}
