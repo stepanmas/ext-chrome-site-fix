@@ -31,9 +31,40 @@ class Discordapp
         setInterval(
             () =>
             {
+                console.log('Change channel');
                 document.querySelectorAll('.guild')[window.utils.mt_rand(0, guild_len)].querySelectorAll('a')[0].click()
             },
             range_time * 60 * 1000
         );
+
+        setInterval(
+            () => {
+                let rooms = document.querySelectorAll('*[class*="content-"]');
+                let el = document.querySelectorAll('*[class*="content-"]')[window.utils.mt_rand(0, rooms.length - 1)];
+
+                console.log('Change room');
+
+                if (!el.querySelectorAll('[name="ChannelVoice"]').length)
+                {
+                    el.click();
+                    setTimeout(
+                    () => {
+                        let scroller = document.querySelectorAll('.scroller');
+
+                        if (scroller.length)
+                            scroller[1].scrollTop = scroller[1].scrollHeight;
+                    }, 1000
+                )
+                }
+            },
+            window.utils.mt_rand(1, 4) * 60 * 1000
+        );
+
+        setInterval(
+            () => {
+                document.title = document.querySelectorAll('.username')[0].innerText;
+            },
+            1000
+        )
     }
 }
