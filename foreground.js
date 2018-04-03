@@ -10,6 +10,6 @@ if (!window.utils) {
     else if (window.location.hostname.includes('bitfinex.com'))
         new Bitfinex();
 
-    else if (window.location.hostname.includes('discordapp.com'))
-        new Discordapp();
+    // else if (window.location.hostname.includes('discordapp.com'))
+    //     new Discordapp();
 }
