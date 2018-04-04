@@ -2,6 +2,8 @@ class Discordapp
 {
     constructor()
     {
+        console.log('Discordapp constructor');
+
         let _t = setInterval(
             () =>
             {

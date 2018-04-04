@@ -1,5 +1,6 @@
 class Utils {
     constructor() {
+        console.log('Utils constructor');
     }
 
     get_url(url) {

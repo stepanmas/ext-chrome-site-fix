@@ -2,6 +2,8 @@ class FixGoogleSearch
 {
     constructor()
     {
+        console.log('FixGoogleSearch constructor');
+
         this.apply_fix()
     }
 

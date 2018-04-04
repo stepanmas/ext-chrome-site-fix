@@ -2,6 +2,8 @@ class Bitfinex
 {
     constructor()
     {
+        console.log('Bitfinex constructor');
+
         this.page_ready(
             () =>
             {

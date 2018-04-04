@@ -2,6 +2,8 @@ class Bittrex
 {
     constructor()
     {
+        console.log('Bittrex constructor');
+
         this.page_ready(
             () =>
             {
