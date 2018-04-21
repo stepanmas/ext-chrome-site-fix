@@ -15,7 +15,7 @@ class Bitfinex
 
                         console.log(rsi);
 
-                        if (rsi >= 85 || rsi <= 15)
+                        if (rsi >= 84 || rsi <= 16)
                         {
                             this.alarm_play();
                         }
