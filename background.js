@@ -1,4 +1,4 @@
-const files = [
+const files        = [
     "vendor/jquery.js",
     "vendor/doT.min.js",
     "vendor/highstock.js",
@@ -9,7 +9,7 @@ const files = [
     "modules/fix_bitfinex.js",
     "modules/fix_discordapp.js",
 
-    "foreground.js"
+    "foreground.js",
 ];
 let included_files = [];
 
@@ -24,13 +24,14 @@ chrome.tabs.onUpdated.addListener(
                     return;
 
                 included_files.push(ph);
+
                 chrome.tabs.executeScript(
                     tabId,
-                    {file: ph}
+                    {file: ph},
                 );
             }
         }
-    }
+    },
 );
 
 chrome.runtime.onMessage.addListener(
@@ -40,7 +41,7 @@ chrome.runtime.onMessage.addListener(
 
         if (request.action === "get_balance")
         {
-            xhr.open('GET', `http://stepych.ddns.net/api/trader/balance/${request.pair}/`, false);
+            xhr.open("GET", `http://stepych.ddns.net/api/trader/balance/${request.pair}/`, false);
             xhr.onreadystatechange = function (res)
             {
                 if (xhr.status === 200)
@@ -50,7 +51,7 @@ chrome.runtime.onMessage.addListener(
         }
         else if (request.action === "get_history")
         {
-            xhr.open('GET', `http://stepych.ddns.net/api/trader/history/${request.pair}/`, false);
+            xhr.open("GET", `http://stepych.ddns.net/api/trader/history/${request.pair}/`, false);
             xhr.onreadystatechange = function (res)
             {
                 if (xhr.status === 200)
@@ -61,7 +62,7 @@ chrome.runtime.onMessage.addListener(
 
         else if (request.action === "get_price_cmc")
         {
-            xhr.open('GET', `https://api.coinmarketcap.com/v1/ticker/${request.pair}/`, false);
+            xhr.open("GET", `https://api.coinmarketcap.com/v1/ticker/${request.pair}/`, false);
             xhr.onreadystatechange = function (res)
             {
                 if (xhr.status === 200)
@@ -73,9 +74,9 @@ chrome.runtime.onMessage.addListener(
         else if (request.action === "get_history_for")
         {
             xhr.open(
-                'GET',
+                "GET",
                 `http://stepych.ddns.net/api/trader/history_for/${request.pair}/${request.time_amount}-${request.time_type}/`,
-                false
+                false,
             );
             xhr.onreadystatechange = function (res)
             {
@@ -89,9 +90,9 @@ chrome.runtime.onMessage.addListener(
         else if (request.action === "get_history_candles")
         {
             xhr.open(
-                'GET',
+                "GET",
                 `http://stepych.ddns.net/api/trader/history_candles/${request.pair}/`,
-                false
+                false,
             );
             xhr.onreadystatechange = function (res)
             {
@@ -105,9 +106,9 @@ chrome.runtime.onMessage.addListener(
         {
             let audio = new Audio();
 
-            audio.src = 'dog.mp3';
+            audio.src = "dog.mp3";
 
             audio.play();
         }
-    }
+    },
 );

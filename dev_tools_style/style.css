@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
+body {
+    background : #000;
+}
+
+:host-context(.platform-linux) .monospace,
+:host-context(.platform-linux) .source-code,
+.platform-linux .monospace,
+.platform-linux .source-code {
+    font-size   : 14px !important;
+    font-family : 'Ubuntu Mono', monospace !important;
+}
+
+.monospace,
+.source-code {
+    font-size   : 14px !important;
+    font-family : 'Ubuntu Mono', monospace !important;
+}
+
+::shadow .monospace,
+::shadow .source-code {
+    font-size   : 14px !important;
+    font-family : 'Ubuntu Mono', monospace !important;
+}

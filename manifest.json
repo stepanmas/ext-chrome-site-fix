@@ -30,21 +30,20 @@
     "proxy",
     "tabs",
     "activeTab",
-    "<all_urls>"
+    "<all_urls>",
+    "chrome://*/*",
+    "background"
   ],
   "web_accessible_resources": [
     "/vendor/jquery.js",
     "/vendor/doT.min.js",
     "/vendor/highstock.js",
-
     "/modules/utils.js",
     "/modules/fix_google_search.js",
     "/modules/fix_bittrex.js",
     "/modules/fix_bitfinex.js",
     "/modules/fix_discordapp.js",
-
     "/foreground.js",
-
     "dog.mp3",
     "popup.html"
   ]
