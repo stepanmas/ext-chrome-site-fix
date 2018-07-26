@@ -2,7 +2,7 @@ class FixGoogleSearch
 {
     constructor()
     {
-        console.log('FixGoogleSearch constructor');
+        //console.log('FixGoogleSearch constructor');
 
         this.apply_fix()
     }
@@ -10,7 +10,6 @@ class FixGoogleSearch
     apply_fix()
     {
         let result_headers = $('h3 a');
-
 
         result_headers.each(
             (i, el) =>

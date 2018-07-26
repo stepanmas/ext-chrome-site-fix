@@ -7,7 +7,6 @@ const files        = [
 
     "foreground.js",
 ];
-let included_files = [];
 
 chrome.tabs.onUpdated.addListener(
     function (tabId, info)
@@ -16,11 +15,6 @@ chrome.tabs.onUpdated.addListener(
         {
             for (let ph of files)
             {
-                if (included_files.includes(ph))
-                    return;
-
-                included_files.push(ph);
-
                 chrome.tabs.executeScript(
                     tabId,
                     {file: ph},
