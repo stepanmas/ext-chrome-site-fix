@@ -8,18 +8,18 @@ body {
 :host-context(.platform-linux) .source-code,
 .platform-linux .monospace,
 .platform-linux .source-code {
-    font-size   : 14px !important;
+    font-size   : 11px !important;
     font-family : 'Ubuntu Mono', monospace !important;
 }
 
 .monospace,
 .source-code {
-    font-size   : 14px !important;
+    font-size   : 11px !important;
     font-family : 'Ubuntu Mono', monospace !important;
 }
 
 ::shadow .monospace,
 ::shadow .source-code {
-    font-size   : 14px !important;
+    font-size   : 11px !important;
     font-family : 'Ubuntu Mono', monospace !important;
 }

@@ -1,13 +1,9 @@
 const files        = [
     "vendor/jquery.js",
     "vendor/doT.min.js",
-    "vendor/highstock.js",
 
     "modules/utils.js",
     "modules/fix_google_search.js",
-    "modules/fix_bittrex.js",
-    "modules/fix_bitfinex.js",
-    "modules/fix_discordapp.js",
 
     "foreground.js",
 ];
