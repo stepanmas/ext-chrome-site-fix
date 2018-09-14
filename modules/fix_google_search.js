@@ -9,15 +9,15 @@ var FixGoogleSearch = class
 
     apply_fix()
     {
-        let result_headers = $("h3 a");
+        let result_headers = $("h3");
 
         result_headers.each(
             (i, el) =>
             {
-                $(el).attr("tabindex", ++i);
+                $(el).parent().attr("tabindex", ++i);
             },
         );
 
-        result_headers.first().focus();
+        result_headers.first().parent().focus();
     }
 };
