@@ -14,7 +14,7 @@ var FixGoogleSearch = class
         result_headers.each(
             (i, el) =>
             {
-                $(el).parent().attr("tabindex", ++i);
+                $(el).find('a').attr("tabindex", ++i);
             },
         );
 
