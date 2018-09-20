@@ -18,6 +18,6 @@ var FixGoogleSearch = class
             },
         );
 
-        result_headers.first().parent().focus();
+        result_headers.first().find('a').focus();
     }
 };
