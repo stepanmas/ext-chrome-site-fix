@@ -14,10 +14,17 @@ var FixGoogleSearch = class
         result_headers.each(
             (i, el) =>
             {
-                $(el).find('a').attr("tabindex", ++i);
+                var target_el = $(el).find('a');
+
+                if (!target_el.length) {
+                    target_el = $(el).parent();
+                }
+
+                if (!i) {
+                    target_el.focus();
+                }
+                target_el.attr("tabindex", ++i);
             },
         );
-
-        result_headers.first().find('a').focus();
     }
 };
