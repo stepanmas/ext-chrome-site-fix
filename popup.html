@@ -1,45 +1,49 @@
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <title>Website fixes</title>
+  <meta charset="UTF-8">
+  <title>Website fixes</title>
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-Website fixes
-<script src="content.js"></script>
+<div class="app">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#bitmex" role="tab"
+          aria-controls="bitmex" aria-selected="false">
+        Bitmex
+      </a>
+    </li>
+  </ul>
 
-<script type="text/template" id="tpl_fb_spread">
-    <div class="col-md-12 col-xs-6 stat-right {{= it.cs }}">
-        <div class="wrapper">
-            <div class="title title-{{= it.direction }}"><strong>{{= it.label }}</strong></div>
-            <div class="base-market-subtitle">
-                <span contenteditable="true">{{= it.price_high }}</span>
-            </div>
-            <div class="base-market">
-                <i class="fa fa-{{= it.icon }}"></i>
-                <span>{{= it.price_low }}</span>
-            </div>
-            <div class="direction">
-                <span class="dyn-stat-{{= it.direction }}"></span>
-            </div>
-        </div>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="bitmex" role="tabpanel"
+        aria-labelledby="bitmex">
+      <h4>Правила входа:</h4>
+
+      <ol>
+        <li>Стоп выставлять автоматически на 5% от входа</li>
+        <li>Скальпельный вход на пике и сразу выставлять стоп (1 правило)</li>
+        <li>Переставлять стоп в безубыток при первой возможности</li>
+      </ol>
+
+      <form class="form-inline" action="">
+        <input pattern="\d" type="number" class="form-control mr-5 price-take"
+            placeholder="Price take">
+        <input pattern="\d" type="number" class="form-control mr-5 price-liquidation"
+            placeholder="Liquidation">
+        <b class="price-stop"></b>
+      </form>
     </div>
-</script>
+  </div>
+</div>
 
-<script type="text/template" id="tpl_fb_style">
-    <style>
-        .market-stats .wrapper .title {
-            font-size: 14px;
-        }
+<script src="vendor/jquery.js"></script>
+<script src="vendor/popper.min.js"></script>
+<script src="vendor/bootstrap.min.js"></script>
 
-        .market-stats .wrapper {
-            margin-bottom: 3px;
-        }
+<script src="modules/Bitmex.js"></script>
 
-        .market-stats .wrapper .base-market {
-            font-size: 14px;
-        }
-    </style>
-</script>
-
+<script src="content.js"></script>
 </body>
 </html>

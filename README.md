@@ -1,3 +1,3 @@
-# ext_chrome_site_fix
+# Extension for chrome, fixes in some websites
 
 Load it like extension for chrome

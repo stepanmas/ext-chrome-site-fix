@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Website fixes",
   "description": "Some fixes for websites",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "background": {
     "scripts": [
       "background.js"

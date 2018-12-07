@@ -1,0 +1,12 @@
+body {
+    min-width: 800px;
+    overflow-x: hidden;
+}
+
+.app {
+    padding: 10px;
+}
+
+.tab-content {
+    padding: 10px;
+}
