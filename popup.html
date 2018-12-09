@@ -9,31 +9,17 @@
 <div class="app">
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#bitmex" role="tab"
-          aria-controls="bitmex" aria-selected="false">
-        Bitmex
+      <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"
+          aria-controls="tab1" aria-selected="false">
+        Tab 1
       </a>
     </li>
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane fade show active" id="bitmex" role="tabpanel"
-        aria-labelledby="bitmex">
-      <h4>Правила входа:</h4>
-
-      <ol>
-        <li>Стоп выставлять автоматически на 10% от входа</li>
-        <li>Скальпельный вход на пике и сразу выставлять стоп (1 правило)</li>
-        <li>Переставлять стоп в безубыток при первой возможности</li>
-      </ol>
-
-      <form class="form-inline" action="">
-        <input pattern="\d" type="number" class="form-control mr-5 price-take"
-            placeholder="Price take">
-        <input pattern="\d" type="number" class="form-control mr-5 price-liquidation"
-            placeholder="Liquidation">
-        <b class="price-stop"></b>
-      </form>
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel"
+        aria-labelledby="tab1">
+      tab1
     </div>
   </div>
 </div>
@@ -42,7 +28,6 @@
 <script src="vendor/popper.min.js"></script>
 <script src="vendor/bootstrap.min.js"></script>
 
-<script src="modules/Bitmex.js"></script>
 
 <script src="content.js"></script>
 </body>
