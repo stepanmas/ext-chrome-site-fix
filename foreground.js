@@ -1,7 +1,7 @@
-if (!window.utils)
-{
-    window.utils = new Utils();
+if (!window.utils) {
+  window.utils = new Utils();
 
-    if (/https:\/\/www.google.(ru|com)\/search/.test(window.location))
-        new FixGoogleSearch();
+  if (/https:\/\/www.google.(ru|com)\/search/.test(window.location)) {
+    new FixGoogleSearch();
+  }
 }

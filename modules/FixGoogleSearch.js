@@ -1,27 +1,27 @@
 const FixGoogleSearch = class {
-    constructor() {
-        //console.log('FixGoogleSearch constructor');
+  constructor() {
+    //console.log('FixGoogleSearch constructor');
 
-        this.applyFix();
-    }
+    this.applyFix();
+  }
 
-    applyFix() {
-        let resultHeaders = $("h3");
+  applyFix() {
+    let resultHeaders = $("h3");
 
-        resultHeaders.each(
-            (i, el) => {
-                let $target = $(el).find('a');
+    resultHeaders.each(
+      (i, el) => {
+        let $target = $(el).find('a');
 
-                if (!$target.length) {
-                    $target = $(el).parent();
-                }
+        if (!$target.length) {
+          $target = $(el).parent();
+        }
 
-                if (!i) {
-                    $target.focus();
-                }
+        if (!i) {
+          $target.focus();
+        }
 
-                $target.attr("tabindex", ++i);
-            },
-        );
-    }
+        $target.attr("tabindex", ++i);
+      },
+    );
+  }
 };
