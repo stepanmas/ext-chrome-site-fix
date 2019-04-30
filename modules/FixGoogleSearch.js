@@ -1,4 +1,4 @@
-const FixGoogleSearch = class {
+var FixGoogleSearch = class {
   constructor() {
     //console.log('FixGoogleSearch constructor');
 

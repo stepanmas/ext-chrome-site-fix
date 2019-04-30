@@ -1,4 +1,4 @@
-const Utils = class {
+var Utils = class {
   constructor() {
     // console.log("Utils constructor");
   }
