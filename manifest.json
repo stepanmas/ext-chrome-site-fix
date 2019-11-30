@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Website fixes",
   "description": "Some fixes for websites",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "background": {
     "scripts": [
       "background.js"
@@ -38,7 +38,8 @@
     "/vendor/jquery.js",
     "/vendor/doT.min.js",
     "/modules/utils.js",
-    "/modules/fix_google_search.js",
+    "/modules/FixGoogleSearch.js",
+    "/modules/Bitmex.js",
     "/foreground.js",
     "popup.html"
   ]

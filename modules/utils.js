@@ -27,4 +27,8 @@ var Utils = class {
       },
     );
   }
+
+  $(selector) {
+    return document.querySelector(selector);
+  }
 };
