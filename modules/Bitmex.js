@@ -10,27 +10,40 @@ class Bitmex {
   startWatchStopOCO() {
     this.stopOCOTimer = setInterval(
       () => {
+        if (!utils.$('td.avgCostPrice')) {
+          return;
+        }
+
         const currentPrice = this.getLastPrice();
         const enterPrice = this.getEnterPrice();
 
         this.printDebug(currentPrice, enterPrice, this.calcStopPrice(), this.isStopSet(), this.getCountContracts());
 
+        /*
+        Don't work, because secure
         if (currentPrice && enterPrice && !this.isStopSet()) {
-          if (currentPrice > enterPrice + this.priceDeltaForStop) {
-            console.log('set');
+          let direct = null;
+
+          if (this.isShort() && currentPrice < enterPrice - this.priceDeltaForStop) {
+            direct = 'sell';
+          } else if (currentPrice > enterPrice + this.priceDeltaForStop) {
+            direct = 'buy';
+          }
+
+          if (direct) {
             this.setCloseTriggerCheckbox(true);
             this.activeStopTab();
             utils.$('#orderQty').value = this.getCountContracts();
             utils.$('#stopPx').value = this.calcStopPrice();
-            utils.$('.orderControlsButtons .sell').click();
+            utils.$('.orderControlsButtons .' + direct).click();
           }
-        }
+        }*/
       },
-      1000);
+      10000);
   }
 
   calcStopPrice() {
-    return this.getEnterPrice() + this.stopDelta;
+    return this.isShort() ? this.getEnterPrice() - this.stopDelta : this.getEnterPrice() + this.stopDelta;
   }
 
   getLastPrice() {
@@ -42,7 +55,7 @@ class Bitmex {
   }
 
   getCountContracts() {
-    return +(utils.$('.positionStatusIndicator .pricePos').innerText || 0);
+    return +(utils.$('.positionStatusIndicator .posValue').innerText || 0);
   }
 
   isStopSet() {
@@ -51,7 +64,16 @@ class Bitmex {
   }
 
   printDebug(...args) {
-    document.querySelector('.tradingViewWrapper .title').innerText = args.join(', ');
+    const insertDiv = utils.$('#header > div:last-child');
+    const homeDiv = utils.$('#debug-info');
+    if (!homeDiv) {
+      const div = document.createElement('div');
+      div.id = 'debug-info';
+      div.innerText = args.join(', ');
+      insertDiv.parentNode.insertBefore(div, insertDiv);
+    } else {
+      homeDiv.innerText = args.join(', ');
+    }
   }
 
   setCloseTriggerCheckbox(flag) {
@@ -63,5 +85,9 @@ class Bitmex {
 
   activeStopTab() {
     document.querySelector('.ordTypes li:nth-child(3)').click();
+  }
+
+  isShort() {
+    return !!utils.$('.positionsList .short');
   }
 }
