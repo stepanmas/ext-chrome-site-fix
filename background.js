@@ -4,7 +4,6 @@ const files = [
 
   "modules/utils.js",
   "modules/FixGoogleSearch.js",
-  "modules/Bitmex.js",
 
   "foreground.js",
 ];
