@@ -5,6 +5,8 @@ class Bitmex {
 
   constructor() {
     this.startWatchStopOCO();
+    const leverageLayout = utils.$('.leverageWrapper');
+    leverageLayout.parentNode.removeChild(leverageLayout);
   }
 
   startWatchStopOCO() {

@@ -39,6 +39,7 @@
     "/vendor/doT.min.js",
     "/modules/utils.js",
     "/modules/FixGoogleSearch.js",
+    "/modules/Bitmex.js",
     "/foreground.js",
     "popup.html"
   ]
