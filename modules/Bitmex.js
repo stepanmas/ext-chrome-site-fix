@@ -22,7 +22,8 @@ class Bitmex {
         // currentPrice, enterPrice, this.calcStopPrice(), this.isStopSet(), this.getCountContracts()
         this.printDebug({
           'Стоп б/у': this.calcStopPrice(),
-          'Стоп по достижению': this.calcSetStopPrice()
+          //'Стоп по достижению': this.calcSetStopPrice(),
+          'NEVER TOUCH LEVERAGE': 'PREVENT FOMO EFFECT!!!',
         });
 
         /*
@@ -73,16 +74,29 @@ class Bitmex {
     return stopsTrEl ? stopsTrEl.length < 2 : false;
   }
 
+  buildHtmlTip = (prev, [key, value], index) => {
+    const span = document.createElement('span');
+    if (index === 1) {
+      span.style.color = 'red';
+      span.style.textTransform = 'uppercase';
+      span.style.fontWeight = 'bold';
+    }
+    span.innerText = `${key}: ${value} `;
+    prev.appendChild(span);
+    return prev;
+  };
+
   printDebug(data) {
     const insertDiv = utils.$('#header > div:last-child');
     const homeDiv = utils.$('#debug-info');
     if (!homeDiv) {
       const div = document.createElement('div');
       div.id = 'debug-info';
-      div.innerText = Object.entries(data).reduce((prev, [key, value]) => prev + `${key}: ${value} `, '');
+      div.appendChild(Object.entries(data).reduce(this.buildHtmlTip, document.createDocumentFragment()));
       insertDiv.parentNode.insertBefore(div, insertDiv);
     } else {
-      homeDiv.innerText = Object.entries(data).reduce((prev, [key, value]) => prev + `${key}: ${value} `, '');
+      homeDiv.innerHTML = '';
+      homeDiv.appendChild(Object.entries(data).reduce(this.buildHtmlTip, document.createDocumentFragment()));
     }
   }
 

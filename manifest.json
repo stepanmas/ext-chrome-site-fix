@@ -31,7 +31,6 @@
     "tabs",
     "activeTab",
     "<all_urls>",
-    "chrome://*/*",
     "background"
   ],
   "web_accessible_resources": [
